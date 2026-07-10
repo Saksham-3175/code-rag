@@ -1,0 +1,563 @@
+[
+  {
+    "id": "api_q1",
+    "question": "What HTTP methods are explicitly listed as options for the method parameter in the request function docstring?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "GET, OPTIONS, HEAD, POST, PUT, PATCH, or DELETE."
+  },
+  {
+    "id": "api_q2",
+    "question": "What data types are accepted for the timeout parameter in the request function?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "A float or a tuple."
+  },
+  {
+    "id": "api_q3",
+    "question": "What is the default boolean value for the allow_redirects parameter in the request function?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "True."
+  },
+  {
+    "id": "api_q4",
+    "question": "According to the docstring of the get function, what types of data can be sent in the query string via the params argument?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "get",
+    "draft_answer": "Dictionary, list of tuples, or bytes."
+  },
+  {
+    "id": "api_q5",
+    "question": "If allow_redirects is not explicitly provided in the kwargs of the head function, what default value does it get set to?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "head",
+    "draft_answer": "False."
+  },
+  {
+    "id": "api_q6",
+    "question": "Which two keyword arguments, specifically used for sending data in the request body, are explicitly listed in the post function signature?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "post",
+    "draft_answer": "data and json."
+  },
+  {
+    "id": "api_q7",
+    "question": "According to the inline comment in the request function, why is a 'with' statement used when instantiating a Session?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "To ensure the session is closed, avoiding leaving sockets open which can trigger a ResourceWarning or look like a memory leak."
+  },
+  {
+    "id": "api_q8",
+    "question": "In the request function, what does a 4-tuple provided to the files parameter consist of?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "('filename', fileobj, 'content_type', custom_headers)."
+  },
+  {
+    "id": "api_q9",
+    "question": "What is the default value of the data parameter in the put function's signature?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "put",
+    "draft_answer": "None."
+  },
+  {
+    "id": "api_q10",
+    "question": "If a string is passed to the cert parameter in the request function, what must it represent?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "The path to the ssl client cert file (.pem)."
+  },
+  {
+    "id": "api_q11",
+    "question": "What string is passed as the first argument to the underlying request call inside the options function?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "options",
+    "draft_answer": "options"
+  },
+  {
+    "id": "api_q12",
+    "question": "What happens if the stream parameter is set to False in the request function?",
+    "tier": "lookup",
+    "target_file": "api.py",
+    "target_symbol": "request",
+    "draft_answer": "The response content will be immediately downloaded."
+  },
+  {
+    "id": "sessions_q1",
+    "question": "If the session_setting parameter is None, what does the merge_setting function return?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "merge_setting",
+    "draft_answer": "It returns the request_setting."
+  },
+  {
+    "id": "sessions_q2",
+    "question": "In the merge_hooks function, what does it return if request_hooks is None or its 'response' key maps to an empty list?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "merge_hooks",
+    "draft_answer": "It returns session_hooks."
+  },
+  {
+    "id": "sessions_q3",
+    "question": "In get_redirect_target, what character encoding is the location header temporarily re-encoded to before being decoded to utf8?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "SessionRedirectMixin.get_redirect_target",
+    "draft_answer": "latin1."
+  },
+  {
+    "id": "sessions_q4",
+    "question": "According to the should_strip_auth method, what is the first condition checked that immediately returns True to strip authentication?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "SessionRedirectMixin.should_strip_auth",
+    "draft_answer": "If the old parsed hostname does not match the new parsed hostname."
+  },
+  {
+    "id": "sessions_q5",
+    "question": "In rebuild_method, what HTTP method does a POST request get converted into if the response status code is codes.moved?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "SessionRedirectMixin.rebuild_method",
+    "draft_answer": "GET."
+  },
+  {
+    "id": "sessions_q6",
+    "question": "What is the default value assigned to max_redirects when a new Session object is initialized?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.__init__",
+    "draft_answer": "DEFAULT_REDIRECT_LIMIT."
+  },
+  {
+    "id": "sessions_q7",
+    "question": "Which two URL prefixes are explicitly mounted with an HTTPAdapter in the __init__ method of the Session class?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.__init__",
+    "draft_answer": "https:// and \"http://\"."
+  },
+  {
+    "id": "sessions_q8",
+    "question": "What specific exception is raised in the send method of the Session class if the request argument is an instance of Request rather than a PreparedRequest?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.send",
+    "draft_answer": "A ValueError with the message 'You can only send PreparedRequests.'."
+  },
+  {
+    "id": "sessions_q9",
+    "question": "What exception does the get_adapter method raise if it cannot find any matching connection adapter for a provided URL?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.get_adapter",
+    "draft_answer": "InvalidSchema."
+  },
+  {
+    "id": "sessions_q10",
+    "question": "When closing a Session via the close method, what specific values are iterated over and closed?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.close",
+    "draft_answer": "The values in the self.adapters dictionary."
+  },
+  {
+    "id": "sessions_q11",
+    "question": "In the Session.mount method, how are the connection adapters sorted in the adapters dictionary after a new prefix is added?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "Session.mount",
+    "draft_answer": "They are sorted in descending order by prefix length."
+  },
+  {
+    "id": "sessions_q12",
+    "question": "According to its docstring, since what version has the module-level session() function been deprecated?",
+    "tier": "lookup",
+    "target_file": "sessions.py",
+    "target_symbol": "session",
+    "draft_answer": "Version 1.0.0."
+  },
+  {
+    "id": "exceptions_q1",
+    "question": "What built-in exception class does RequestException inherit from?",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "RequestException",
+    "draft_answer": "IOError."
+  },
+  {
+    "id": "exceptions_q2",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "RequestException.__init__",
+    "draft_answer": "It attempts to set it from response.request."
+  },
+  {
+    "id": "exceptions_q3",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "JSONDecodeError",
+    "draft_answer": "InvalidJSONError and CompatJSONDecodeError."
+  },
+  {
+    "id": "exceptions_q4",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "JSONDecodeError.__reduce__",
+    "draft_answer": "To ensure the __reduce__ method from CompatJSONDecodeError is called during pickling, as the default MRO would call the one from IOError."
+  },
+  {
+    "id": "exceptions_q5",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "Timeout",
+    "draft_answer": "ConnectTimeout and ReadTimeout."
+  },
+  {
+    "id": "exceptions_q6",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "ConnectTimeout",
+    "draft_answer": "ConnectionError and Timeout."
+  },
+  {
+    "id": "exceptions_q7",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "ReadTimeout",
+    "draft_answer": "The server did not send any data in the allotted amount of time."
+  },
+  {
+    "id": "exceptions_q8",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "MissingSchema",
+    "draft_answer": "ValueError."
+  },
+  {
+    "id": "exceptions_q9",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "ContentDecodingError",
+    "draft_answer": "BaseHTTPError (imported from urllib3.exceptions.HTTPError)."
+  },
+  {
+    "id": "exceptions_q10",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "StreamConsumedError",
+    "draft_answer": "TypeError."
+  },
+  {
+    "id": "exceptions_q11",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "FileModeWarning",
+    "draft_answer": "RequestsWarning and DeprecationWarning."
+  },
+  {
+    "id": "exceptions_q12",
+    "tier": "lookup",
+    "target_file": "exceptions.py",
+    "target_symbol": "RequestsDependencyWarning",
+    "draft_answer": "An imported dependency doesn't match the expected version range."
+  },
+  {
+    "id": "utils_q1",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "get_netrc_auth",
+    "draft_answer": "It falls back to checking \"~/.netrc\" and \"~/_netrc\"."
+  },
+  {
+    "id": "utils_q2",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "super_len",
+    "draft_answer": "FileModeWarning."
+  },
+  {
+    "id": "utils_q3",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "extract_zipped_paths",
+    "draft_answer": "It simply returns the unchanged path."
+  },
+  {
+    "id": "utils_q4",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "from_key_val_list",
+    "draft_answer": "ValueError: cannot encode objects that are not 2-tuples."
+  },
+  {
+    "id": "utils_q5",
+    "question": "According to the docstring for parse_dict_header, what is the value assigned to a key if the item being parsed does not contain an '=' character?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "parse_dict_header",
+    "draft_answer": "None."
+  },
+  {
+    "id": "utils_q6",
+    "question": "Which three HTML tags/attributes does get_encodings_from_content attempt to extract a charset/encoding from via regex?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "get_encodings_from_content",
+    "draft_answer": "meta charset, meta content (pragma), and xml encoding."
+  },
+  {
+    "id": "utils_q7",
+    "question": "If the content-type header contains 'application/json' but does not specify a charset, what encoding does get_encoding_from_headers return?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "get_encoding_from_headers",
+    "draft_answer": "\"utf-8\""
+  },
+  {
+    "id": "utils_q8",
+    "question": "If unquote_unreserved encounters a two-character hex sequence after a '%' that cannot be converted to an integer, what exception does it raise?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "unquote_unreserved",
+    "draft_answer": "InvalidURL."
+  },
+  {
+    "id": "utils_q9",
+    "question": "What is the return value of address_in_network if ip = 192.168.1.1 and net = 192.168.100.0/24?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "address_in_network",
+    "draft_answer": "False."
+  },
+  {
+    "id": "utils_q10",
+    "question": "What four keys are present in the CaseInsensitiveDict returned by default_headers?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "default_headers",
+    "draft_answer": "User-Agent, Accept-Encoding, Accept, and Connection."
+  },
+  {
+    "id": "utils_q11",
+    "question": "In the guess_json_utf function, what encoding is returned if there is exactly 1 null byte in the first 4 bytes?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "guess_json_utf",
+    "draft_answer": "None (the logic checks for 0, 2, or 3 null counts, and returns None if it doesn't match those patterns)."
+  },
+  {
+    "id": "utils_q12",
+    "question": "If rewind_body is called on a prepared_request where _body_position is not an integer type, what exception is raised?",
+    "tier": "lookup",
+    "target_file": "utils.py",
+    "target_symbol": "rewind_body",
+    "draft_answer": "UnrewindableBodyError (with message \"Unable to rewind request body for redirect.\")."
+  },
+  {
+    "id": "adapters_q1",
+    "question": "In the _urllib3_request_context function, what string is assigned to cert_reqs if the verify parameter is explicitly set to False?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "_urllib3_request_context",
+    "draft_answer": "CERT_NONE"
+  },
+  {
+    "id": "adapters_q2",
+    "question": "What specific exception and message are raised by the fallback SOCKSProxyManager function if the SOCKS dependencies are not installed?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "SOCKSProxyManager",
+    "draft_answer": "InvalidSchema(Missing dependencies for SOCKS support.)"
+  },
+  {
+    "id": "adapters_q3",
+    "question": "What is the default value of the max_retries parameter in the HTTPAdapter initialization signature?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.__init__",
+    "draft_answer": "DEFAULT_RETRIES."
+  },
+  {
+    "id": "adapters_q4",
+    "question": "In HTTPAdapter.cert_verify, if verify is True but no explicit certificate location is provided, what default path is assigned to cert_loc?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.cert_verify",
+    "draft_answer": "DEFAULT_CA_BUNDLE_PATH."
+  },
+  {
+    "id": "adapters_q5",
+    "question": "What dictionary class is used to wrap and store the headers on the response object within HTTPAdapter.build_response?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.build_response",
+    "draft_answer": "CaseInsensitiveDict."
+  },
+  {
+    "id": "adapters_q6",
+    "question": "Which two internal manager attributes have their clear() methods called when an HTTPAdapter is closed?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.close",
+    "draft_answer": "self.poolmanager and the proxy values inside self.proxy_manager."
+  },
+  {
+    "id": "adapters_q7",
+    "question": "What specific HTTP header does proxy_headers add to the returned dictionary if a username is successfully extracted from the proxy URL?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.proxy_headers",
+    "draft_answer": "Proxy-Authorization."
+  },
+  {
+    "id": "adapters_q8",
+    "question": "According to the DeprecationWarning in get_connection, which method should users migrate to for Requests>=2.32.2?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.get_connection",
+    "draft_answer": "get_connection_with_tls_context."
+  },
+  {
+    "id": "adapters_q9",
+    "question": "In the request_url method, what function is called to format the URL if the request is proxied over HTTP but does not use a SOCKS proxy?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.request_url",
+    "draft_answer": "urldefragauth."
+  },
+  {
+    "id": "adapters_q10",
+    "question": "If the timeout parameter passed into HTTPAdapter.send is a tuple, what two local variables is it unpacked into?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.send",
+    "draft_answer": "connect and read."
+  },
+  {
+    "id": "adapters_q11",
+    "question": "Inside HTTPAdapter.send, if a MaxRetryError is caught and its reason is an instance of ResponseError, what custom requests exception is raised?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.send",
+    "draft_answer": "RetryError."
+  },
+  {
+    "id": "adapters_q12",
+    "question": "In the HTTPAdapter.__setstate__ method, what are self.proxy_manager and self.config explicitly set to before iterating over the state dictionary?",
+    "tier": "lookup",
+    "target_file": "adapters.py",
+    "target_symbol": "HTTPAdapter.__setstate__",
+    "draft_answer": "An empty dictionary ({})."
+  },
+  {
+    "id": "models_q1",
+    "question": "What is the fallback path assigned in the path_url property if the URL has no path?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "RequestEncodingMixin.path_url",
+    "draft_answer": "\"/"
+  },
+  {
+    "id": "models_q2",
+    "question": "If data is passed to RequestEncodingMixin._encode_files and it is a string (basestring), what exception is raised?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "RequestEncodingMixin._encode_files",
+    "draft_answer": "ValueError(\"Data must not be a string.\")"
+  },
+  {
+    "id": "models_q3",
+    "question": "In deregister_hook, what does the function return if the hook is successfully removed?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "RequestHooksMixin.deregister_hook",
+    "draft_answer": "True."
+  },
+  {
+    "id": "models_q4",
+    "question": "When a Request object is initialized, what happens to the dictionary of hooks before it is stored?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Request.__init__",
+    "draft_answer": "It is merged with default_hooks(), and each provided hook is registered individually."
+  },
+  {
+    "id": "models_q5",
+    "question": "What happens in PreparedRequest.prepare_url if the host string starts with a wildcard (*)?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "PreparedRequest.prepare_url",
+    "draft_answer": "It raises InvalidURL(\"URL has an invalid label.\")."
+  },
+  {
+    "id": "models_q6",
+    "question": "If files are provided to prepare_body while the data parameter evaluates as iterable but not a basic data type, what exception is raised?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "PreparedRequest.prepare_body",
+    "draft_answer": "NotImplementedError(\"Streamed bodies and files are mutually exclusive.\")"
+  },
+  {
+    "id": "models_q7",
+    "question": "If prepare_content_length cannot determine the length of the body, and the HTTP method is not GET or HEAD, what value is assigned to the Content-Length header?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "PreparedRequest.prepare_content_length",
+    "draft_answer": "\"0\""
+  },
+  {
+    "id": "models_q8",
+    "question": "In the Response.__bool__ (and __nonzero__) methods, what triggers the method to return False?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Response.__bool__",
+    "draft_answer": "A caught HTTPError when calling self.raise_for_status()."
+  },
+  {
+    "id": "models_q9",
+    "question": "What is the fallback encoding returned by apparent_encoding if the chardet library is not available (is None)?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Response.apparent_encoding",
+    "draft_answer": "\"utf-8\""
+  },
+  {
+    "id": "models_q10",
+    "question": "If iter_content is called after the stream is fully consumed (and _content is boolean True), what exception is raised?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Response.iter_content",
+    "draft_answer": "StreamConsumedError."
+  },
+  {
+    "id": "models_q11",
+    "question": "If self.encoding is None in the json() method, what happens if guess_json_utf returns None before attempting to load?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Response.json",
+    "draft_answer": "It falls back to decoding the JSON from self.text."
+  },
+  {
+    "id": "models_q12",
+    "question": "In raise_for_status, if the reason string is bytes and cannot be decoded as utf-8, what encoding does it fall back to?",
+    "tier": "lookup",
+    "target_file": "models.py",
+    "target_symbol": "Response.raise_for_status",
+    "draft_answer": "\"iso-8859-1\""
+  }
+]
