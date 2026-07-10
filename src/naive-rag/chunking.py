@@ -6,9 +6,8 @@ Stage 1a - Dumb baseline chunking (line-based, no code awareness).
 
 from __future__ import annotations
 from pathlib import Path 
-from typing import TypedDict, Iterable, List, Any
+from typing import TypedDict,List
 import json 
-import os
 
 class Chunk(TypedDict):
     chunk_id: str
