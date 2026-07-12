@@ -20,7 +20,7 @@ past the initial piloting/notebook phase.
 - [x] **Stage 1a** — Dumb baseline chunking (line-based, no code-structure awareness).
       40-line windows, 5-line overlap, per-file chunk IDs. Output: `data/chunks/chunks_1a.json`.
 - [X] **Stage 1b** — AST-aware chunking (function/class-level, Python `ast` module).
-- [ ] **Stage 2** — Embedding + vector storage (both chunk sets indexed separately).
+- [X] **Stage 2** — Embedding + vector storage (both chunk sets indexed separately).
 - [ ] **Stage 3** — Retrieval (Stage 0 queries run against both indices).
 - [ ] **Stage 4** — Thin/naive generation layer.
 - [ ] **Stage 5** — Scripted eval pass, manual scoring, comparison writeup.
@@ -70,10 +70,43 @@ Bugs hit and fixed during piloting (full postmortems in Notion):
    field and swept into the module chunk's reconstructed `text`. Fixed by excluding that node from
    the module-level sweep.
 
+## Stage 2 notes
+
+Embedding via `BAAI/bge-small-en-v1.5` (local, `sentence-transformers`), chosen over API-based
+embedding for iteration speed and full inspectability of the embedding step. No vector DB —
+corpus is ~200-400 chunks total across both sets, well under any scale that would justify one.
+Storage is raw numpy: normalized embedding vectors saved as `.npy`, with a parallel `chunk_id`
+JSON list preserving row-alignment. Cosine similarity reduces to a dot product on normalized
+vectors; retrieval is a single matrix-vector multiply + `argsort`, no framework or DB layer
+between query and result.
+
+Both chunk sets (`chunks_1a.json`, `chunks_1b.json`) canonicalized to a flat list structure at
+this stage — 1a was previously a dict grouped by source file; 1b was already flat. Uniform shape
+going forward removes branching logic from all downstream code.
+
+Every chunk in both sets carries an explicit `truncated: bool` field (BGE's 512-token limit,
+checked via the model's own tokenizer) — 3 chunks flagged in 1a, 19 in 1b. Oversized chunks are
+not split or fixed this stage; the tokenizer would otherwise truncate them silently on encode,
+so the flag exists to make that truncation visible and queryable at eval/debug time rather than
+leaving it invisible. Whether these specific chunks cause retrieval misses is a Stage 3/5 question,
+not assumed here.
+
+Query-side embedding uses BGE's documented asymmetric prefix convention
+(`"Represent this sentence for searching relevant passages: "`). Empirical A/B testing on 3 eval
+queries showed a smaller effect than expected — top-1 result was stable with/without the prefix,
+only minor rank-2/3 reshuffling. Prefix retained on trained-convention grounds; full effect (if
+any) to be re-evaluated against the complete Stage 0 eval set in Stage 3/5.
+
+Bugs hit and fixed during this stage (full postmortem in Notion):
+1. Truncation-marking script read from and wrote to the same source file across two inconsistent
+   versions of the marking logic, producing duplicate nested + flat `truncated` keys on every
+   flagged chunk. Fixed by restoring pristine chunk files and making the marking operation a full,
+   unconditional overwrite every run — idempotent, safe to re-run in place.
+
 ## Repo structure
 
 ```
-src/naive-rag/       # chunking.py, embed.py, store.py, retrieve.py, generate.py
+src/naive-rag/       # ast_chunking.py, navie_chunking.py, embed.py, store.py, retrieve.py, generate.py
 notebooks/         # piloting/verification before code enters src/
 data/corpus/       # the 6 target source files
 data/chuks/             # chunk_1a.json, chunk_1b.json (comparison artifacts)
